@@ -1,0 +1,34 @@
+:root{
+  /* ===== Base neutrals — warm, not pure black/white ===== */
+  --ink-900:#17130E;   /* primary warm near-black */
+  --ink-800:#211B14;
+  --ink-700:#2E271C;
+  --ink-500:#5A4F3E;   /* muted warm brown-grey */
+  --bone-000:#FBF8F1;  /* brightest surface */
+  --bone-100:#F5F0E6;  /* primary warm off-white */
+  --bone-200:#ECE4D4;  /* subtle raised surface */
+  --bone-300:#DED2BB;  /* hairline / border on light */
+
+  /* ===== Brand accent — Emerald (primary) ===== */
+  --emerald-900:#0C2A20; /* deepest — near-black green */
+  --emerald-700:#123D2E; /* deep forest — primary dark surface */
+  --emerald-600:#175640;
+  --emerald-500:#1E6B4F; /* mid emerald — primary accent */
+  --emerald-400:#2E8A67;
+  --emerald-300:#5FB891; /* light emerald — on-dark accent / text */
+  --emerald-200:#A6DCC5;
+
+  /* ===== Gold (optional secondary luxe accent) ===== */
+  --gold-600:#A87A34;
+  --gold-500:#C0954A;
+  --gold-300:#E4C489;
+
+  /* ===== Fixed brand aliases (do not flip with theme) ===== */
+  --accent:var(--emerald-500);
+  --accent-contrast:var(--bone-000);
+  --accent-alt:var(--gold-500);
+  --bg-emerald:var(--emerald-700);
+  --border-on-dark:#3A3226;      /* border on the always-dark feature blocks */
+  --panel-bg:var(--ink-900);     /* hero / podcast identity panels — always dark */
+  --panel-fg:var(--bone-100);    /* wordmark on the dark panels */
+}

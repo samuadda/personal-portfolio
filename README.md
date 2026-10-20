@@ -11,11 +11,15 @@ A bilingual (العربية / English), RTL-first personal portfolio for **Siddi
 
 ## Run it
 ```bash
-npm install
+npm ci
 npm run dev      # http://localhost:3000  (redirects to /ar or /en)
+# validation:
+npm run lint
 # production:
 npm run build && npm run start
 ```
+
+ESLint uses the recommended JavaScript, TypeScript, and React Hooks rules, with warnings treated as failures. The Next.js-specific PostCSS override keeps its pinned transitive dependency on a patched release; revisit it when upgrading Next.js.
 
 ## Structure
 ```

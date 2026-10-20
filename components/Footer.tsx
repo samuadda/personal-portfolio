@@ -2,7 +2,7 @@ import type { Dict } from "@/lib/content";
 import { type Locale, SOCIALS } from "@/lib/site";
 import { ArrowUpRight, socialIcon } from "./Icons";
 
-export function Footer({ locale, dict }: { locale: Locale; dict: Dict }) {
+export function Footer({ dict }: { locale: Locale; dict: Dict }) {
   const links: [string, string][] = [
     ["#about", dict.nav.about],
     ["#work", dict.nav.work],

@@ -51,23 +51,39 @@ export function Interactions({ ok, err }: { ok: string; err: string }) {
     themeBtn?.addEventListener("click", onTheme);
     cleanups.push(() => themeBtn?.removeEventListener("click", onTheme));
 
-    /* ---- header nav drawer (mobile) ---- */
+    /* ---- header navigation ---- */
     const menuBtn = $<HTMLButtonElement>("#menuBtn");
     const nav = $<HTMLElement>("#hdrNav");
+    const header = $<HTMLElement>(".site-header");
     const setMenu = (open: boolean) => {
       nav?.classList.toggle("open", open);
       menuBtn?.setAttribute("aria-expanded", String(open));
     };
     const toggleMenu = () => setMenu(!nav?.classList.contains("open"));
     const closeMenu = () => setMenu(false);
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeMenu(); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && nav?.classList.contains("open")) {
+        closeMenu();
+        menuBtn?.focus();
+      }
+    };
+    const onOutside = (e: PointerEvent) => {
+      if (e.target instanceof Node && !header?.contains(e.target)) closeMenu();
+    };
+    const onFocusOut = (e: FocusEvent) => {
+      if (!(e.relatedTarget instanceof Node) || !header?.contains(e.relatedTarget)) closeMenu();
+    };
     menuBtn?.addEventListener("click", toggleMenu);
     $$("[data-menu-link]").forEach((a) => a.addEventListener("click", closeMenu));
     document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onOutside);
+    header?.addEventListener("focusout", onFocusOut);
     cleanups.push(() => {
       menuBtn?.removeEventListener("click", toggleMenu);
       $$("[data-menu-link]").forEach((a) => a.removeEventListener("click", closeMenu));
       document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onOutside);
+      header?.removeEventListener("focusout", onFocusOut);
     });
 
     /* ---- newsletter ---- */
